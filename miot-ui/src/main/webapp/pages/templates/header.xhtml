@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<div id="header">
+			<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 no-padding-right">
+				<span id="logo-container" >
+				<img src="resources/images/logo.png" alt="logo" class="logo-default"/>
+				</span>
+			</div>
+
+			<div
+				class="col-xs-6 col-sm-5 col-sm-push-4 col-md-4 col-md-push-6 col-lg-4 col-lg-push-6 no-padding">
+
+			<ul class="nav navbar-nav navbar-right" id="menu-right">
+				<li class="dropdown hidden-xs">
+					<a href="http://www.sialbioinfotools.com//wiki/index.php?title=Main_Page" title="Instructions" class="dropdown-toggle" target="_blank">
+						<i class="material-icons" id="help-icon"></i>
+					</a>
+				</li>
+                
+                <li class="dropdown-user dropdown-responsive">
+					<a href="#" class="dropdown-toggle" id="header_dropdown_user_link" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<i class="material-icons" id="account-icon"></i>
+						<span class="username hidden-sm hidden-xs">
+							admin </span>
+					</a>
+					<input type="hidden" id="ownerManager"/>
+					
+				</li>
+				
+				
+			</ul>
+
+			</div>
+
+			<div
+				class="col-xs-12 col-sm-4 col-sm-pull-5 col-md-6 col-md-pull-4 col-lg-6 col-lg-pull-4 no-padding">
+				
+				<form class="navbar-form" id="search-form" role="search" action="/jsf_frontend_evaluation/faces/secured/search/text_search.xhtml" >
+				<div class="input-icon left">
+				<i class="material-icons" id="search-icon"></i>
+					<input type="text" id="search-input" class="form-control" placeholder="Search " name="query"/>
+				</div>
+			</form>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>
+

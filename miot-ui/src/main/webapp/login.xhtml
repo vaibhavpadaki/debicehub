@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+ 
+      >
+    <h:head>
+        <title>login</title>
+        <style>
+
+</style>
+    </h:head>
+    
+    
+    <h:body class="login" style="background-image: url('resources/images/login-background.png')">
+    
+    <h:outputStylesheet library="css" name="application.css"  />
+    <h:outputStylesheet library="css" name="components.css"  />
+    <h:outputStylesheet library="css" name="custom_styles.css"  />
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 col-xl-4 col-xl-offset-4">
+    <div class=" card login-card">
+    <div class="cardHeader add-divider">
+                <div class="row">
+                <img src="resources/images/vibrant-m-logo.png" class="brand-logo"></img>
+                </div>
+                <div class="row">
+                <img src="resources/images/labs-logo-purple.svg" class="labs-logo"></img>
+                </div>
+                Collaborative Problem-Solving
+            </div>
+    <h:form styleClass="tab-content">
+    
+        <p:panel styleClass="login-form"  >
+        <div >
+        <div class=" nav nav-pills labs-nav-pills active">
+         LOGIN
+        </div>
+       
+        
+        <p:inputText style="background-color:#fff" styleClass="form-group form-control" id="username" value="#{loginBean.username}" placeholder="user name" />
+ 		
+ 		<p:message for="username" ></p:message>
+ 		
+        
+        <p:password style="background-color:#fff" styleClass="form-group form-control" id="password" value="#{loginBean.password}"  feedback="false" placeholder="password"></p:password>
+ 
+        <p:spacer></p:spacer>
+ 
+        <p:message for="password"></p:message>
+ 
+        <p:spacer></p:spacer>
+ 
+ 		<p:commandButton styleClass="btn btn-block labs-btn blue" action="#{loginBean.login}" value="SIGN IN"  ajax="false"></p:commandButton>
+		</div>
+    </p:panel>
+ 
+  </h:form>
+ 
+  </div>
+  </div>
+    </h:body> 
+ 
+</html>

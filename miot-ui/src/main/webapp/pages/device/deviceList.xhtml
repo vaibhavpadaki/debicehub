@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	
+    <h:head>
+        <title>Device list</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+    	<style>
+		#filterpanel_content{
+			padding-left: 0px;
+		}
+		.ui-helper-hidden-accessible{
+			
+		}
+		.ui-chkbox-box ui-widget ui-corner-all ui-state-default{
+			border: none;
+		}
+		.ui-chkbox-icon ui-icon ui-c ui-icon-blank{
+			background-color: #dedede;
+    border-radius: 3px !important;
+    /* border: 1px solid #b2b2b2; */
+    box-shadow: aquamarine;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 1px #000000;
+		}
+		</style>
+    </h:head>
+    
+    
+    <h:body>
+    
+    <h:outputStylesheet  library="css" name="application.css"  />
+    <h:outputStylesheet library="css" name="components.css"  />
+    <h:outputStylesheet library="css" name="custom_styles.css"  />
+    <h:outputStylesheet library="css" name="m_iot_styles.css"  />
+    
+    <ui:insert name="header" >
+  	<ui:include src="/pages/templates/header.xhtml" />
+	</ui:insert>
+    <ui:insert name="labs-sidebar" >
+  	<ui:include src="/pages/templates/sidebar.xhtml" />
+	</ui:insert>
+	
+    
+    <div class="page-content-wrapper">
+    	<div class="page-content">
+    
+    
+    <div class="row page-bar">
+    <p:breadCrumb id="breadcrumb" styleClass="page-breadcrumb" style="background: white;border: none;">
+    	<p:menuitem id="categories" value="Categories" url="#" />
+	    <p:menuitem id="equipment" value="Equipment &amp; Instruments" url="#" />
+	</p:breadCrumb>
+	</div>
+    
+
+    <h:form id="deviceListForm" prependId="false">
+    
+    <div class="card padding">
+    
+    <div class="cardHeader add-divider">
+    	<div class="row">
+    	<div class="col-xs-12 col-sm-8 col-md-9">
+    	Equipment &amp; Instruments
+    	</div>
+    	</div>
+    </div>
+    
+    <div class="cardItems" style="padding: 0px">
+	
+	    <div class="col-xs-12 col-md-9 col-lg-9">
+	    <p:dataTable id="devicelisttable" rowStatePreserved="true" binding="#{deviceBean.selectedDevice}"  style="margin-top:0px;padding-top:0px;" rowStyleClass="gridStyles gridDataStyles" styleClass="ui-datatable-tablewrapper table dataTable" var="device" value="#{deviceBean.deviceList}" sortMode="single" widgetVar="deviceTable" filteredValue="#{deviceBean.filteredDeviceList}">
+	    <div class="row">
+	    <f:facet name="header">
+	    		
+	            <p:outputPanel id="outputpanel" styleClass="input-icon left"> 
+	            	<i class="material-icons" id="search-icon"></i>
+	                <p:inputText  styleClass="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all form-control filterInput" id="globalFilter" onkeyup="PF('deviceTable').filter()"  placeholder="Search Equipment"/>
+	             	
+	            </p:outputPanel>
+	            
+	        </f:facet>
+	        
+	       </div>
+	       
+	        <p:column id="devicename" headerText="Name" styleClass="gridStyles" filterStyle="display:none" filterBy="#{device.deviceName}" sortBy="#{device.deviceName}" priority="1">
+	            
+	            <p:commandLink id="devicenamedata" styleClass="gridDataStyles" value="#{device.deviceName}" action="#{deviceBean.deviceDetails}"></p:commandLink>
+	        </p:column>
+	 
+	        <p:column id="devicetype" headerText="Type" styleClass="gridStyles" filterStyle="display:none" filterBy="#{device.deviceType}" sortBy="#{device.deviceType}" priority="2">
+	            <h:outputText id="devicetypedata" styleClass="gridDataStyles" value="#{device.deviceType}" />
+	        </p:column>
+	 
+	        <p:column id="deviceavailability" headerText="Availability" styleClass="gridStyles" filterStyle="display:none" filterBy="#{device.deviceAvailability}"  sortBy="#{device.deviceAvailability}" priority="3">
+	            <p:commandLink id="deviceavailabilitydata" styleClass="gridDataStyles" value="#{device.deviceAvailability}" />
+	        </p:column>
+	    </p:dataTable>
+	    </div>
+    
+    
+        <div class="col-xs-12 col-md-3 col-lg-3">
+        <div class="filters">
+        <p:panel id="filterpanel" header="FILTERS" styleClass="fontStyles " style="border:none;font-family: Lucida Grande,Helvetica,Arial,Verdana,sans-serif;font-size: 14px;">
+        	<div class="scroller">
+        	<div class="filter-section">
+        	<p:selectManyCheckbox  styleClass="checkbox" id="grid3" value="#{deviceBean.selectedTypes}" layout="pageDirection" columns="1" style="margin-left:20px">
+        		<f:selectItems  id="filteritems" value="#{deviceBean.typeFilter}" var="type" itemLabel="#{type}" itemValue="#{type}" />
+    		</p:selectManyCheckbox>
+    		</div>
+    		</div>
+        </p:panel>
+        </div>
+    	</div>
+    	
+    	
+	</div>
+	
+	
+	</div>
+	</h:form>
+	
+	</div>
+    </div>
+    
+    
+    
+    </h:body>
+</html>

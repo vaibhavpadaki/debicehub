@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Device list</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	
+	<style>
+	#deviceDetailsPanel_header{
+		background: #f5f5f5;
+		color: #58595B;
+		border: 1px solid #d0d0d0;
+		border-bottom: none;
+	}
+	#deviceDetailsPanel_content{
+		border: 1px solid #d0d0d0;
+	}
+	</style>
+</h:head>
+
+
+<h:body>
+
+	<h:outputStylesheet library="css" name="application.css" />
+	<h:outputStylesheet library="css" name="components.css" />
+	<h:outputStylesheet library="css" name="custom_styles.css" />
+	<h:outputStylesheet library="css" name="m_iot_styles.css" />
+
+
+	<ui:insert name="header">
+		<ui:include src="/pages/templates/header.xhtml" />
+	</ui:insert>
+	<ui:insert name="labs-sidebar">
+		<ui:include src="/pages/templates/sidebar.xhtml" />
+	</ui:insert>
+
+
+	<div class="page-content-wrapper">
+		<div class="page-content">
+
+
+			<div class="page-bar">
+				<p:breadCrumb styleClass="page-breadcrumb"
+					style="background: white;border: none;">
+					<p:menuitem value="Categories" url="#" />
+					<p:menuitem value="Equipment &amp; Instruments"
+						url="/pages/device/deviceList.jsf" />
+					<p:menuitem value="#{deviceDetailsBean.deviceName}" url="#" />
+				</p:breadCrumb>
+			</div>
+
+		
+	<h:form prependId="false">
+	<div class="col-lg-9">
+		<div class="card padding">
+			<div class="cardHeader add-divider">
+				<div class="row">
+					<div class="col-lg-10 col-sm-10 col-xs-8 ellipsisText">
+						<h:outputText value="#{deviceDetailsBean.deviceName}"></h:outputText>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel-group">
+    		<p:panel header="Equipment Details" id="deviceDetailsPanel" >
+    			<p:panelGrid columns="2" >
+    				<p:graphicImage  name="images/devices/bioreactor.jpg" style="border:none;"/>
+    				<p:panelGrid columns="1">
+    				<p:outputLabel value="Equipment Name"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				<p:outputLabel value="Vendor"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				<p:outputLabel value="Storage Location"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				<p:outputLabel value="Model"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				<p:outputLabel value="Serial #"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				<p:outputLabel value="Description"></p:outputLabel>
+    				<p:inputText value=""></p:inputText>
+    				</p:panelGrid>
+    			</p:panelGrid>
+    		</p:panel>
+    		</div>
+			
+			
+		</div>
+	</div>
+
+
+	</h:form>
+
+	
+
+	</div>
+	</div>
+	
+</h:body>
+</html>
